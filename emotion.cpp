@@ -151,3 +151,41 @@ int Emotion::count_middle()
     val /= 3;
     return val;
 }
+
+void Emotion::get_info(const std::vector<std::pair<QString, QString>>& info, const QString& text)
+{
+    txt->setText(text);
+    for (int i = 0; i < day_buts.size(); i++)
+    {
+        set_but_style(day_buts[i], main_colors);
+    }
+    for (int i = 0; i < info.size(); i++)
+    {
+        if (info[i].first == "main_color")
+        {
+            med_but->setStyleSheet("background-color: " + info[i].second + ';');
+        }
+        for (int j = 0; j < main_colors.size(); j++)
+        {
+            if (info[i].second == main_colors[j])
+            {
+                QString st = "background-color: " + main_colors[j] +"; color: " + main_colors[j] + ';' + "border: solid 2px;";
+                if (info[i].first == "morning")
+                {
+                    day_buts[0][j]->setStyleSheet(st);
+                    prev[0] = day_buts[0][j]->text();
+                }
+                else if (info[i].first == "lunch")
+                {
+                    day_buts[1][j]->setStyleSheet(st);
+                    prev[1] = day_buts[1][j]->text();
+                }
+                else if (info[i].first == "evening")
+                {
+                    day_buts[2][j]->setStyleSheet(st);
+                    prev[2] = day_buts[2][j]->text();
+                }
+            }
+        }
+    }
+}

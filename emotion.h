@@ -22,6 +22,7 @@ public:
 signals:
     void close_window();
 private slots:
+    void get_info(const std::vector<std::pair<QString, QString>>& info, const QString& text);
     void change_border();
     void my_res();
     void end();

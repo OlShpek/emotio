@@ -8,6 +8,8 @@
 class Day : public Week
 {
     Q_OBJECT
+signals:
+    void recov_info(const std::vector<std::pair<QString, QString>>&, const QString&);
 public:
     Day(const std::vector<std::pair<QString, std::vector<std::pair<QString, QString>>>>& path, const QString& name);
     virtual void view() override;
